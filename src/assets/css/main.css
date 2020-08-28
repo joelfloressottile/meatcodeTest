@@ -64,6 +64,7 @@
     background-color: #009CD9;
     color: #FFFFFF;
     transition: background-color 0.2s;
+    cursor:pointer;
 }
 
 .btn:hover,

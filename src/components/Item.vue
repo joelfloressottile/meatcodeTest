@@ -11,8 +11,11 @@
       </p>
     </div>
     <div v-else class="vertical-center w-inherit open-sans">
+      <span class="search-icon">
+        <i class="fa fa-search"></i>
+      </span>
       <p>
-        <a href class="last-card-text">Ver inventario completo</a>
+        <a href="#/" class="last-card-text">Ver todo</a>
       </p>
     </div>
   </div>
@@ -105,5 +108,9 @@ export default {
 
 .image {
   max-width: 100%;
+}
+
+.search-icon {
+  font-size: 40px;
 }
 </style>
