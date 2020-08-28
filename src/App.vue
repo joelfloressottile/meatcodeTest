@@ -17,7 +17,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 @font-face {
@@ -30,5 +29,9 @@ export default {
   font-family: "Caveat";
   src: local("Caveat"),
     url(./assets/fonts/Caveat/Caveat-Regular.ttf) format("truetype");
+}
+
+body {
+  margin: 0;
 }
 </style>

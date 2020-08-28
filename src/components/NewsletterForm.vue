@@ -134,12 +134,12 @@ export default {
           phone: this.contactForm.phone
         })
         .then(response => {
-          console.log("Response from server: ", response);
+          console.log("Response from request: ", response);
           this.error = false;
           this.subscribed = true;
         })
         .catch(error => {
-          console.log("Error from server: ", error);
+          console.log("Error from request: ", error);
           this.subscribed = false;
           this.error = true;
         });
