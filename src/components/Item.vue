@@ -7,7 +7,7 @@
       <h4 class="text-header text-left">{{title}}</h4>
       <p class="text-content text-left">{{content}}</p>
       <p class="mb-1 text-left">
-        <a href class="extra-text">Ver más</a>
+        <a href="#/" class="extra-text">Ver más</a>
       </p>
     </div>
     <div v-else class="vertical-center w-inherit open-sans">
@@ -79,13 +79,6 @@ export default {
 .text-content {
   font-size: 14px;
 }
-/* 
-#hover-content {
-  display: none;
-}
-#parent:hover #hover-content {
-  display: block;
-} */
 
 .extra-text {
   color: #d8ad3d !important;

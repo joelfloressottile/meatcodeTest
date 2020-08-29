@@ -1,6 +1,7 @@
 <template>
   <div class="landing">
-    <div class="header relative">
+    <!-- <div class="header relative">
+      <div class="header-image"></div>
       <div class="logo">
         <div class="logo-image"></div>
       </div>
@@ -13,6 +14,24 @@
         </div>
       </div>
       <div class="w-100 h-100 fade-layer"></div>
+    </div>-->
+
+    <div class="header">
+      <div class="header-image"></div>
+      <div class="w-100 h-100 fade-layer"></div>
+      <div class="w-100 h-100 absolute t-0">
+        <div class="text-left h-20">
+          <img src="../assets/images/logo.svg" alt class="logo" />
+        </div>
+        <div class="text-left h-80 relative">
+          <div>
+            <div class="slogan-container">
+              <h1 class="slogan">El secreto de tu cocina</h1>
+            </div>
+            <div class="hero-shape-container"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="d-block mt-4">
@@ -23,10 +42,42 @@
         <h1 class="caveat heading-title">Nuestros artículos</h1>
       </div>
     </div>
+    <div class="responsive-filter-box">
+      <ul class="primary-color">
+        <li class="responsive-filter mx-05">
+          <a
+            href="#/"
+            @click="filterByCategory('Todos')"
+            :class="[ currentCategory == 'Todos' ? ['active-color','bold-font'] : '']"
+          >Todos</a>
+        </li>
+        <li class="responsive-filter mx-05">
+          <a
+            href="#/"
+            @click="filterByCategory('Productos')"
+            :class="[ currentCategory == 'Productos' ? ['active-color','bold-font'] : '']"
+          >Productos</a>
+        </li>
+        <li class="responsive-filter mx-05">
+          <a
+            href="#/"
+            @click="filterByCategory('Recetas')"
+            :class="[ currentCategory == 'Recetas' ? ['active-color','bold-font'] : '']"
+          >Recetas</a>
+        </li>
+        <li class="responsive-filter mx-05">
+          <a
+            href="#/"
+            @click="filterByCategory('Consejos')"
+            :class="[ currentCategory == 'Consejos' ? ['active-color','bold-font'] : '']"
+          >Consejos</a>
+        </li>
+      </ul>
+    </div>
     <div class="mid-section">
       <div class="filter-box soft-shadow mt-3 ml-1 primary-color br-10">
         <ul class="primary-color">
-          <li class="my-2">
+          <li class="mb-2">
             <a
               href="#/"
               @click="filterByCategory('Todos')"
@@ -71,9 +122,9 @@
       <transition name="fade">
         <div v-if="!loading" class="right-box mt-2 list-of-items mb-4">
           <template v-for="item in itemsToShow">
-            <item v-bind="item" :key="item.id" class="mx-1 my-1"></item>
+            <item v-bind="item" :key="item.id" class="item-container"></item>
           </template>
-          <item class="mx-1 my-1"></item>
+          <item class="item-container"></item>
         </div>
       </transition>
     </div>
@@ -103,6 +154,7 @@ export default {
   },
   methods: {
     getItemsByCategory(category) {
+      this.loading = true;
       let filter = category === "Todos" ? "" : "?filter=" + category;
       console.log(
         "Url to request: ",
@@ -157,21 +209,41 @@ export default {
   width: 200px;
 }
 
-.filter-box ul {
+.responsive-filter-box {
+  width: 100%;
+  height: 50px;
+}
+
+.filter-box ul,
+.responsive-filter-box ul {
   font-family: "Open Sans";
   text-align: left;
   margin-left: 10px;
   list-style-type: none;
   padding: 0;
   text-transform: uppercase;
+  width: 100%;
 }
 
-.filter-box ul a {
+.filter-box ul a,
+.responsive-filter-box ul a {
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.filter-box ul li {
+.filter-box ul li,
+.responsive-filter-box ul li {
+  position: relative;
+}
+
+.filter-box ul a,
+.responsive-filter-box ul a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.filter-box ul li,
+.responsive-filter-box ul li {
   position: relative;
 }
 
@@ -202,6 +274,9 @@ export default {
 
 .heading-image {
   filter: opacity(0.3);
+  width: 50%;
+  height: auto;
+  margin-top: 30px;
 }
 
 .heading-title {
@@ -210,14 +285,21 @@ export default {
   position: absolute;
   top: 20px;
   width: 100%;
-  font-size: 50px;
 }
 
 .header {
-  height: 50vh;
+  height: 400px;
+  min-height: 200px;
   width: 100%;
-  background-image: url(../assets/images/hero-background.jpg);
+  position: relative;
+}
+
+.header-image {
+  height: 100%;
+  position: relative;
+  background: url("../assets/images/hero-background.jpg") no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .fade-layer {
@@ -233,9 +315,9 @@ export default {
 }
 
 .logo {
-  width: 25%;
-  height: 25%;
-  padding: 50px 0px 0px 50px;
+  width: 90px;
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 .logo-image {
@@ -247,22 +329,99 @@ export default {
   left: 50px;
 }
 
-.slogan {
-  height: 75%;
-  width: 50%;
+.hero-shape-container {
+  background-image: url(../assets/images/hero-shape.png);
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 100%;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.slogan-text {
-  text-align: left;
-  padding-left: 50px;
-  font-size: 82px;
+.hero-shape {
+  width: 70vw;
+  margin-left: -40%;
+}
+
+.slogan {
+  font-family: "Caveat";
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
+.slogan-container {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
 }
 
 .slogan-heading-image {
   width: 100%;
 }
 
-.heading-image-container {
+.responsive-filter {
+  float: left;
+  display: block;
+  font-size: 14px !important;
+}
+
+/* .heading-image-container {
   margin-left: -100%;
+} */
+
+@media screen and (max-width: 800px) {
+  .heading-title {
+    font-size: 40px;
+  }
+
+  .responsive-filter-box {
+    display: block;
+  }
+
+  .filter-box {
+    display: none;
+  }
+
+  .heading-image {
+    width: 90%;
+  }
+
+  .item-container {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .slogan {
+    font-size: 40px;
+    margin-top: 70px !important;
+    width: 50% !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .heading-title {
+    font-size: 5vw;
+  }
+
+  .responsive-filter-box {
+    display: none;
+  }
+
+  .filter-box {
+    display: flex;
+  }
+
+  .item-container {
+    margin: 10px;
+  }
+
+  .slogan {
+    margin-top: 30px;
+    width: 30%;
+    font-size: 6vw;
+  }
 }
 </style>

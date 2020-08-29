@@ -9,56 +9,48 @@
 
     <form @submit.prevent="checkContactForm" method="post">
       <div class="form-container">
-        <div class="mb-2">
-          <div class="form-item d-block">
-            <label class="form-label text-left d-block mb-05">Nombre</label>
-            <input
-              v-model.trim="$v.contactForm.firstName.$model"
-              :class="{'input-has-error': $v.contactForm.firstName.$invalid && $v.contactForm.firstName.$dirty}"
-              type="text"
-              class="form-input d-block w-80"
-            />
-          </div>
+        <div class="mb-2 form-item d-block">
+          <label class="form-label text-left d-block mb-05">Nombre</label>
+          <input
+            v-model.trim="$v.contactForm.firstName.$model"
+            :class="{'input-has-error': $v.contactForm.firstName.$invalid && $v.contactForm.firstName.$dirty}"
+            type="text"
+            class="form-input d-block w-80"
+          />
         </div>
 
-        <div class="mb-2">
-          <div class="form-item d-block">
-            <label class="form-label text-left d-block mb-05">Apellido</label>
-            <input
-              v-model.trim="$v.contactForm.lastName.$model"
-              :class="{'input-has-error': $v.contactForm.lastName.$invalid && $v.contactForm.lastName.$dirty}"
-              type="text"
-              class="form-input d-block w-80"
-            />
-          </div>
+        <div class="mb-2 form-item d-block">
+          <label class="form-label text-left d-block mb-05">Apellido</label>
+          <input
+            v-model.trim="$v.contactForm.lastName.$model"
+            :class="{'input-has-error': $v.contactForm.lastName.$invalid && $v.contactForm.lastName.$dirty}"
+            type="text"
+            class="form-input d-block w-80"
+          />
         </div>
 
-        <div class="mb-2">
-          <div class="form-item d-block">
-            <label class="form-label text-left d-block mb-05">Mail</label>
-            <input
-              v-model.trim="$v.contactForm.email.$model"
-              :class="{'input-has-error': $v.contactForm.email.$invalid && $v.contactForm.email.$dirty}"
-              type="text"
-              class="form-input d-block w-80"
-            />
-          </div>
+        <div class="mb-2 form-item d-block">
+          <label class="form-label text-left d-block mb-05">Mail</label>
+          <input
+            v-model.trim="$v.contactForm.email.$model"
+            :class="{'input-has-error': $v.contactForm.email.$invalid && $v.contactForm.email.$dirty}"
+            type="text"
+            class="form-input d-block w-80"
+          />
         </div>
 
-        <div class="mb-2">
-          <div class="form-item d-block">
-            <label class="form-label text-left d-block mb-05">Teléfono</label>
-            <input
-              v-model.trim="$v.contactForm.phone.$model"
-              :class="{'input-has-error': $v.contactForm.phone.$invalid && $v.contactForm.phone.$dirty}"
-              type="text"
-              class="form-input d-block w-80"
-            />
-          </div>
+        <div class="mb-2 form-item d-block">
+          <label class="form-label text-left d-block mb-05">Teléfono</label>
+          <input
+            v-model.trim="$v.contactForm.phone.$model"
+            :class="{'input-has-error': $v.contactForm.phone.$invalid && $v.contactForm.phone.$dirty}"
+            type="text"
+            class="form-input d-block w-80"
+          />
         </div>
 
         <div class="d-block btn-item text-right">
-          <label v-if="subscribed" class="open-sans mr-1">¡Suscrito con éxito!</label>
+          <label v-if="subscribed" class="open-sans mr-1 info-label">¡Suscrito con éxito!</label>
           <label
             v-if="!subscribed && error"
             class="open-sans mr-1"
@@ -150,13 +142,12 @@ export default {
 
 <style scoped>
 .form-container {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
-  display: flex;
   flex-wrap: wrap;
 }
 
-.form-container > div {
+.form-container .form-item {
   flex: 1 50%;
 }
 
@@ -170,6 +161,9 @@ export default {
 
 .heading-image {
   filter: opacity(0.3);
+  width: 50%;
+  height: auto;
+  margin-top: 30px;
 }
 
 .heading-title {
@@ -178,6 +172,48 @@ export default {
   position: absolute;
   top: 20px;
   width: 100%;
-  font-size: 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .heading-title {
+    font-size: 40px;
+  }
+
+  .form-container {
+    display: block;
+    width: 80%;
+  }
+
+  .heading-image {
+    width: 90%;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .info-label {
+    display: block;
+    text-align: center;
+  }
+
+  .form-input {
+    width: 90% !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .heading-title {
+    font-size: 5vw;
+  }
+
+  .form-container {
+    display: flex;
+  }
+
+  .heading-image {
+    width: 50%;
+  }
 }
 </style>
