@@ -1,21 +1,5 @@
 <template>
   <div class="landing">
-    <!-- <div class="header relative">
-      <div class="header-image"></div>
-      <div class="logo">
-        <div class="logo-image"></div>
-      </div>
-      <div class="slogan">
-        <div class="relative">
-          <div class="heading-image-container">
-            <img src="../assets/images/hero-shape.png" alt class="slogan-heading-image" />
-          </div>
-          <p class="caveat heading-title slogan-text">El secreto de tu cocina</p>
-        </div>
-      </div>
-      <div class="w-100 h-100 fade-layer"></div>
-    </div>-->
-
     <div class="header">
       <div class="header-image"></div>
       <div class="w-100 h-100 fade-layer"></div>
@@ -185,7 +169,7 @@ export default {
       }
     }
   },
-  // Life cycle events
+  /* Life cycle events */
   mounted() {
     this.getItemsByCategory("Todos");
   }
@@ -367,9 +351,7 @@ export default {
   font-size: 14px !important;
 }
 
-/* .heading-image-container {
-  margin-left: -100%;
-} */
+/* RESPONSIVENESS */
 
 @media screen and (max-width: 800px) {
   .heading-title {
